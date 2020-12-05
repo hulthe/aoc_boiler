@@ -1,0 +1,22 @@
+[package]
+name = "aoc_helpers"
+version = "1.0.0"
+authors = ["Joakim Hulthe <joakim@hulthe.net>"]
+edition = "2018"
+
+[dependencies]
+regex = "1"
+indicatif = "0.15"
+xdg = "2"
+structopt="0.3"
+hex = "0.3.2"
+toml = "0.4.2"
+ron = "0.4.0"
+serde = "1"
+serde_derive = "1"
+
+[dependencies.reqwest]
+version = "0.10"
+default-features = false
+features = ["blocking", "rustls-tls", "cookies"]
+
