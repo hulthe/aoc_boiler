@@ -102,6 +102,7 @@ pub fn generate_days(_tokens: TokenStream) -> TokenStream {
 
             #async_run_calls
 
+            mp.set_move_cursor(true);
             mp.join()?;
 
             Ok(())
