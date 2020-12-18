@@ -2,9 +2,8 @@ use crate::input::get_input;
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use std::error::Error;
 use std::fmt::Display;
-use std::sync::{mpsc::channel, Arc};
+use std::sync::Arc;
 use std::thread::{self, JoinHandle};
-use std::time::Duration;
 use structopt::StructOpt;
 
 #[derive(StructOpt, Debug)]
