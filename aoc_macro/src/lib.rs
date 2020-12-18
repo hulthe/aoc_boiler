@@ -147,5 +147,7 @@ fn get_aoc_dirs() -> io::Result<Vec<String>> {
         }
     }
 
+    dirs.sort();
+
     Ok(dirs)
 }
