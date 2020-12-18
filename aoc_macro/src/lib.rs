@@ -56,6 +56,12 @@ pub fn generate_days(_tokens: TokenStream) -> TokenStream {
                 use test::{black_box, Bencher};
 
                 #[bench]
+                fn parse(b: &mut Bencher) {
+                    let input = aoc_helpers::get_input(YEAR, #day_num).unwrap();
+                    b.iter(|| #day::parse(black_box(&input)));
+                }
+
+                #[bench]
                 fn part1(b: &mut Bencher) {
                     let input = aoc_helpers::get_input(YEAR, #day_num).unwrap();
                     b.iter(|| #day::part1(black_box(&input)));
