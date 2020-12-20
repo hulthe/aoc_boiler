@@ -54,7 +54,7 @@ where
     O2: Display,
 {
     fn msg_is_slim(msg: &str) -> bool {
-        msg.len() <= 10 && !msg.contains('\n')
+        msg.len() <= 24 && !msg.contains('\n')
     }
 
     fn hide_long<'a>(s: &'a str) -> &'a str {
@@ -88,7 +88,7 @@ where
             let solution_2 = p2(&input).to_string();
 
             pb.finish_with_message(&format!(
-                "part 1: {:10}   part 2: {}",
+                "part 1: {:24}   part 2: {}",
                 hide_long(&solution_1),
                 hide_long(&solution_2)
             ));
