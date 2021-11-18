@@ -89,7 +89,6 @@ pub fn generate_days(_tokens: TokenStream) -> TokenStream {
         use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 
         #[derive(StructOpt, Debug)]
-        #[structopt(name = "basic")]
         enum Opt {
             /// Compute all solutions
             All,

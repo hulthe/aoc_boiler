@@ -4,23 +4,25 @@ use std::error::Error;
 use std::fs::File;
 use std::hash::{Hash, Hasher};
 use std::io::{Read, Write};
-use std::path::PathBuf;
+use std::path::Path;
 
 fn download_input(year: u32, day: u8, config: &Config) -> Result<String, Box<dyn Error>> {
     let client = reqwest::blocking::Client::new();
-    let resp = client
+    Ok(client
         .get(&format!("{}/{}/day/{}/input", config.url, year, day))
         .header("cookie", format!("session={}", config.session))
-        .send()?;
-    Ok(resp.text()?)
+        .send()?
+        .error_for_status()?
+        .text()?)
 }
 
-fn write_input_to_cache(cache_path: &PathBuf, input: &str) -> Result<(), Box<dyn Error>> {
+fn write_input_to_cache(cache_path: &Path, input: &str) -> Result<(), Box<dyn Error>> {
     let mut file = File::create(cache_path)?;
     file.write_all(input.as_bytes())?;
     Ok(())
 }
-fn get_input_from_cache(cache_path: &PathBuf) -> Result<String, Box<dyn Error>> {
+
+fn get_input_from_cache(cache_path: &Path) -> Result<String, Box<dyn Error>> {
     let mut cache_data = String::new();
     let mut file = File::open(cache_path)?;
     file.read_to_string(&mut cache_data)?;

@@ -57,13 +57,13 @@ where
         msg.len() <= 24 && !msg.contains('\n')
     }
 
-    fn hide_long<'a>(s: &'a str) -> &'a str {
+    fn hide_long(s: &str) -> &str {
         if msg_is_slim(s) {
             s
         } else {
             "(...)"
         }
-    };
+    }
 
     let spinner_style = ProgressStyle::default_spinner()
         .tick_chars("⠁⠂⠄⡀⢀⠠⠐⠈ ")
@@ -72,7 +72,7 @@ where
 
     let pb = mp.add(ProgressBar::new_spinner());
     pb.set_style(spinner_style);
-    pb.set_prefix(&format!("day{:02}", day));
+    pb.set_prefix(format!("day{:02}", day));
     pb.enable_steady_tick(75);
     let pb = Arc::new(pb);
 
@@ -87,7 +87,7 @@ where
             pb.set_message("Calculating part 2...");
             let solution_2 = p2(&input).to_string();
 
-            pb.finish_with_message(&format!(
+            pb.finish_with_message(format!(
                 "part 1: {:24}   part 2: {}",
                 hide_long(&solution_1),
                 hide_long(&solution_2)
@@ -96,7 +96,7 @@ where
         };
 
         if let Err(e) = run() {
-            pb.finish_with_message(&format!("Error: {}", e));
+            pb.finish_with_message(format!("Error: {}", e));
         }
     })
 }
