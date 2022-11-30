@@ -1,5 +1,4 @@
 use serde_derive::Deserialize;
-use std::error::Error;
 use std::fs::File;
 use std::io::Read;
 
@@ -9,7 +8,7 @@ pub struct Config {
     pub session: String,
 }
 
-pub fn load_config() -> Result<Config, Box<dyn Error>> {
+pub fn load_config() -> anyhow::Result<Config> {
     let mut config_data = String::new();
     let mut file = File::open("config.toml")?;
     file.read_to_string(&mut config_data)?;

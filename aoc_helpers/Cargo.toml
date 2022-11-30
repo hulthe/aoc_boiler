@@ -8,12 +8,13 @@ edition = "2021"
 regex = "1"
 indicatif = "0.16"
 xdg = "2"
-structopt="0.3"
 hex = "0.4"
 toml = "0.5"
 ron = "0.7"
 serde = "1"
 serde_derive = "1"
+clap = { version = "4.0.29", features = ["derive", "env"] }
+anyhow = { version = "1.0.66", features = ["backtrace"] }
 
 [dependencies.reqwest]
 version = "0.11"

@@ -1,12 +1,12 @@
 use crate::input::get_input;
+use clap::Parser;
 use indicatif::{MultiProgress, ProgressBar, ProgressStyle};
 use std::error::Error;
 use std::fmt::Display;
 use std::sync::Arc;
 use std::thread::{self, JoinHandle};
-use structopt::StructOpt;
 
-#[derive(StructOpt, Debug)]
+#[derive(Parser, Debug)]
 pub enum Part {
     /// Run only part 1 of the day
     One,
