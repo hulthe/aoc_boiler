@@ -60,6 +60,7 @@ pub fn generate_days(token: TokenStream) -> TokenStream {
 
             mod #day {
                 use test::{black_box, Bencher};
+                use super::super::#day;
 
                 #[bench]
                 fn parse(b: &mut Bencher) {
