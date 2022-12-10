@@ -31,10 +31,20 @@ where
     let input = get_input(year, day)?;
 
     if let None | Some(Part::One) = part {
-        println!("part 1: {}", p1(&input));
+        let out = p1(&input).to_string();
+        if out.contains('\n') {
+            println!("part 1:\n{out}");
+        } else {
+            println!("part 1: {out}");
+        }
     }
     if let None | Some(Part::Two) = part {
-        println!("part 2: {}", p2(&input));
+        let out = p2(&input).to_string();
+        if out.contains('\n') {
+            println!("part 2:\n{out}");
+        } else {
+            println!("part 2: {out}");
+        }
     }
 
     Ok(())
